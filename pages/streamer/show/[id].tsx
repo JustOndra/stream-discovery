@@ -1,8 +1,8 @@
-import { ErrorComponent } from '@refinedev/mui';
+import { MuiShowInferencer } from '@refinedev/inferencer/mui';
 import { GetServerSideProps } from 'next';
 
-export default function CatchAll() {
-  return <ErrorComponent />;
+export default function BlogPostShow() {
+  return <MuiShowInferencer />;
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {

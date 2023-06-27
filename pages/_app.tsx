@@ -1,24 +1,28 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+import { Refine } from '@refinedev/core';
+import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar';
 import {
+  DarkTheme,
   RefineSnackbarProvider,
   ThemedLayoutV2,
   notificationProvider,
-} from "@refinedev/mui";
+} from '@refinedev/mui';
 import routerProvider, {
   DocumentTitleHandler,
   UnsavedChangesNotifier,
-} from "@refinedev/nextjs-router";
-import type { NextPage } from "next";
-import { AppProps } from "next/app";
+} from '@refinedev/nextjs-router';
+import type { NextPage } from 'next';
+import { AppProps } from 'next/app';
 
-import { Header } from "@components/header";
-import { ColorModeContextProvider } from "@contexts";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import { dataProvider } from "@refinedev/supabase";
-import { authProvider } from "src/authProvider";
-import { supabaseClient } from "src/utility";
+import { Header } from '@components/header';
+import { ThemedSiderV2 } from '@components/themedLayout/sider';
+
+import { Title } from '@components/title';
+import { ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { dataProvider } from '@refinedev/supabase';
+import { authProvider } from 'src/authProvider';
+import { supabaseClient } from 'src/utility';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -35,7 +39,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     }
 
     return (
-      <ThemedLayoutV2 Header={() => <Header sticky />}>
+      <ThemedLayoutV2
+        Header={() => <Header sticky />}
+        Sider={() => <ThemedSiderV2 Title={Title} />}
+      >
         <Component {...pageProps} />
       </ThemedLayoutV2>
     );
@@ -43,11 +50,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      <GitHubBanner />
       <RefineKbarProvider>
-        <ColorModeContextProvider>
+        <ThemeProvider theme={DarkTheme}>
           <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+          <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
           <RefineSnackbarProvider>
             <Refine
               routerProvider={routerProvider}
@@ -56,21 +62,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
               notificationProvider={notificationProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
-                  meta: {
-                    canDelete: true,
-                  },
-                },
-                {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: 'streamer',
                   meta: {
                     canDelete: true,
                   },
@@ -87,7 +79,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
               <DocumentTitleHandler />
             </Refine>
           </RefineSnackbarProvider>
-        </ColorModeContextProvider>
+        </ThemeProvider>
       </RefineKbarProvider>
     </>
   );
