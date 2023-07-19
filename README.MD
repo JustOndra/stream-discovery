@@ -24,9 +24,9 @@ Logged in users can create new streamer and rate existing one.
 
 ### Frontend
 
-- [Refine] (https://refine.dev/)
-- [Next.js with typescript] (https://nextjs.org/)
-- [Material UI] (https://mui.com/)
+- [Refine](https://refine.dev/)
+- [Next.js with typescript](https://nextjs.org/)
+- [Material UI](https://mui.com/)
 
 ### Preview
 
