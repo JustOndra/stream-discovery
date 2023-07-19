@@ -50,7 +50,7 @@ npm install
 - Setup env
 
 ```
-cp streamer-discovery/.env.example streamer-discovery/.env
+cp stream-discovery/.env.example stream-discovery/.env
 ```
 
 - Run app
