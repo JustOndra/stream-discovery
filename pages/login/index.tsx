@@ -1,21 +1,11 @@
-import { AuthPage } from "@refinedev/mui";
+import { AuthPage } from '@refinedev/mui';
 
-import { GetServerSideProps } from "next";
+import { GetServerSideProps } from 'next';
 
-import { authProvider } from "src/authProvider";
+import { authProvider } from 'src/authProvider';
 
 export default function Login() {
-  return (
-    <AuthPage
-      type="login"
-      formProps={{
-        defaultValues: {
-          email: "info@refine.dev",
-          password: "refine-supabase",
-        },
-      }}
-    />
-  );
+  return <AuthPage type="login" />;
 }
 
 Login.noLayout = true;

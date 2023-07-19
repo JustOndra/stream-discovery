@@ -1,7 +1,7 @@
-import { AuthBindings } from "@refinedev/core";
-import nookies from "nookies";
+import { AuthBindings } from '@refinedev/core';
+import nookies from 'nookies';
 
-import { supabaseClient } from "./utility";
+import { supabaseClient } from './utility';
 
 export const authProvider: AuthBindings = {
   login: async ({ email, password }) => {
@@ -18,14 +18,14 @@ export const authProvider: AuthBindings = {
     }
 
     if (data?.session) {
-      nookies.set(null, "token", data.session.access_token, {
+      nookies.set(null, 'token', data.session.access_token, {
         maxAge: 30 * 24 * 60 * 60,
-        path: "/",
+        path: '/',
       });
 
       return {
         success: true,
-        redirectTo: "/",
+        redirectTo: '/',
       };
     }
 
@@ -33,13 +33,13 @@ export const authProvider: AuthBindings = {
     return {
       success: false,
       error: {
-        name: "LoginError",
-        message: "Invalid username or password",
+        name: 'LoginError',
+        message: 'Invalid username or password',
       },
     };
   },
   logout: async () => {
-    nookies.destroy(null, "token");
+    nookies.destroy(null, 'token');
     const { error } = await supabaseClient.auth.signOut();
 
     if (error) {
@@ -51,7 +51,7 @@ export const authProvider: AuthBindings = {
 
     return {
       success: true,
-      redirectTo: "/login",
+      redirectTo: '/login',
     };
   },
   register: async ({ email, password }) => {
@@ -71,7 +71,7 @@ export const authProvider: AuthBindings = {
       if (data) {
         return {
           success: true,
-          redirectTo: "/",
+          redirectTo: '/',
         };
       }
     } catch (error: any) {
@@ -84,25 +84,27 @@ export const authProvider: AuthBindings = {
     return {
       success: false,
       error: {
-        message: "Register failed",
-        name: "Invalid email or password",
+        message: 'Register failed',
+        name: 'Invalid email or password',
       },
     };
   },
   check: async (ctx) => {
     const { token } = nookies.get(ctx);
-    const { data } = await supabaseClient.auth.getUser(token);
-    const { user } = data;
+    if (token) {
+      const { data } = await supabaseClient.auth.getUser(token);
+      const { user } = data;
 
-    if (user) {
-      return {
-        authenticated: true,
-      };
+      if (user) {
+        return {
+          authenticated: true,
+        };
+      }
     }
 
     return {
       authenticated: false,
-      redirectTo: "/login",
+      redirectTo: '/login',
     };
   },
   getPermissions: async () => {
@@ -115,12 +117,13 @@ export const authProvider: AuthBindings = {
     return null;
   },
   getIdentity: async () => {
-    const { data } = await supabaseClient.auth.getUser();
+    const { data } = await supabaseClient.auth.getSession();
+    const { session } = data;
 
-    if (data?.user) {
+    if (session?.user) {
       return {
-        ...data.user,
-        name: data.user.email,
+        ...session.user,
+        name: session.user.email,
       };
     }
 

@@ -1,48 +1,63 @@
-# stream-discovery
+# refine + DEV Open Source Hackathon #2 - README Guideline
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img src="https://refine.ams3.cdn.digitaloceanspaces.com/refine_logo.png"  align="center" />
-    </a>
-</div>
-<br/>
+[![cover-image](https://refine.ams3.cdn.digitaloceanspaces.com/hackathon-2/hackathon_cover.png)](https://s.refine.dev/hackathon2)
 
-This [refine](https://github.com/pankod/refine) project was generated with [superplate](https://github.com/pankod/refine).
+refine Open Source Hackathon #2 is just around the corner and this repository serves as your go-to source for everything you need to know in order to submit a qualifying entry.
 
-## Getting Started
+[:point_right: refine Open Source Hackathon #2 details.](https://s.refine.dev/hackathon2)
 
-**refine** is a React-based framework for building data-intensive applications in no time ✨
+[:point_right: Please submit your project on refine DEV platform announcement post.](#)
 
-Refine offers lots of out-of-the box functionality for rapid development, without compromising extreme customizability. Use-cases include, but are not limited to admin panels, B2B applications and dashboards.
+From rules and guidelines, it provides all the information necessary for successful GitHub submissions. Please prepare your repository README as shown below
 
-## Available Scripts
+You can add `refine-hackathon` tag to your repository to make it easier for us to find your submission.
 
-### Running the development server.
+## Stream discovery
 
-```bash
-    npm run dev
+### Cover Image
+
+Provide your GitHub repository with a visually-appealing cover image for an immediate impression of your submission.
+
+[:point_right: You can use our template cover photos on Figma for README cover image.](https://www.figma.com/community/file/1251145251163309086)
+
+### Project Demo link
+
+If you deployed your project on any platform please write down the link here.
+
+## About
+
+### Description
+
+Stream discovery is web app to discover, create and rate twitch streamer. Guest users can only search streamer.
+Logged in users can create new streamer and rate existing one.
+
+### Backend
+
+- CRUD (Query + Mutation Operations)
+- Authorization / Postgres Row Level Security
+- Supabase - Backend with a Postgres Database, Authentication
+
+### Frontend
+
+- Refine (https://refine.dev/)
+- Next.js with typescript (https://nextjs.org/)
+- Material UI (https://mui.com/)
+
+### Preview
+
+To provide a comprehensive understanding of the submission, add visuals such as GIFs, images and videos have been incorporated to give an impression of what it looks like.
+
+### Install Project
+
+- Clone the repository:
+
+```
+git clone <your repo github link>
 ```
 
-### Building for production.
+- Change directory and install dependencies:
 
-```bash
-    npm run build
 ```
-
-### Running the production server.
-
-```bash
-    npm run start
+cd directory
+npm install
 ```
-
-## Learn More
-
-To learn more about **refine**, please check out the [Documentation](https://refine.dev/docs)
-
-- **Supabase Data Provider** [Docs](https://refine.dev/docs/core/providers/data-provider/#overview)
-- **Material UI** [Docs](https://refine.dev/docs/ui-frameworks/mui/tutorial/)
-- **Inferencer** [Docs](https://refine.dev/docs/packages/documentation/inferencer)
-
-## License
-
-MIT

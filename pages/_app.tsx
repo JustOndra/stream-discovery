@@ -1,15 +1,11 @@
 import { Refine } from '@refinedev/core';
-import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar';
 import {
   DarkTheme,
   RefineSnackbarProvider,
   ThemedLayoutV2,
   notificationProvider,
 } from '@refinedev/mui';
-import routerProvider, {
-  DocumentTitleHandler,
-  UnsavedChangesNotifier,
-} from '@refinedev/nextjs-router';
+import routerProvider from '@refinedev/nextjs-router';
 import type { NextPage } from 'next';
 import { AppProps } from 'next/app';
 
@@ -50,37 +46,33 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      <RefineKbarProvider>
-        <ThemeProvider theme={DarkTheme}>
-          <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
-          <RefineSnackbarProvider>
-            <Refine
-              routerProvider={routerProvider}
-              dataProvider={dataProvider(supabaseClient)}
-              authProvider={authProvider}
-              notificationProvider={notificationProvider}
-              resources={[
-                {
-                  name: 'streamer',
-                  meta: {
-                    canDelete: true,
-                  },
+      <ThemeProvider theme={DarkTheme}>
+        <CssBaseline />
+        <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
+        <RefineSnackbarProvider>
+          <Refine
+            routerProvider={routerProvider}
+            dataProvider={dataProvider(supabaseClient)}
+            authProvider={authProvider}
+            notificationProvider={notificationProvider}
+            resources={[
+              {
+                name: 'streamers',
+                list: '/streamers',
+                meta: {
+                  canDelete: false,
                 },
-              ]}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-              }}
-            >
-              {renderComponent()}
-              <RefineKbar />
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-          </RefineSnackbarProvider>
-        </ThemeProvider>
-      </RefineKbarProvider>
+              },
+            ]}
+            options={{
+              syncWithLocation: true,
+              warnWhenUnsavedChanges: false,
+            }}
+          >
+            {renderComponent()}
+          </Refine>
+        </RefineSnackbarProvider>
+      </ThemeProvider>
     </>
   );
 }

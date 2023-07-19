@@ -1,7 +1,7 @@
 import { NavigateToResource } from '@refinedev/nextjs-router';
 
 export default function Home() {
-  return <NavigateToResource resource="streamer" />;
+  return <NavigateToResource resource="streamers" />;
 }
 
 Home.noLayout = true;
