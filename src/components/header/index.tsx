@@ -181,7 +181,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                 </Typography>
                 <Button
                   component={link}
-                  to="/login"
+                  to="/register"
                   variant="outlined"
                   color="info"
                 >
@@ -189,6 +189,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
                 </Button>
               </Stack>
             )}
+            
           </Stack>
         </Stack>
       </Toolbar>
