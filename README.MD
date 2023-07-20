@@ -9,6 +9,10 @@
 - [Demo](https://stream-discovery.vercel.app/streamers)
   (https://stream-discovery.vercel.app/streamers)
 
+**Demo account**
+- email: refine@hackhathon.com
+- password: Password
+
 ## About
 
 ### Description
